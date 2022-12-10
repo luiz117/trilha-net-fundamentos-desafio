@@ -16,26 +16,32 @@ namespace DesafioFundamentos.Models
         {
             // Implementado!!!!!
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string carroPlaca = Console.ReadLine().ToUpper();
+            veiculos.Add(carroPlaca);
         }
 
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
 
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
-            string placa = "";
+            // Pedir para o usuário digitar a placa e armazenar na variável placa            
+            string placa = Console.ReadLine().ToUpper();
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+                string horasGet = Console.ReadLine();
+
 
                 // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
+
+
+                int horas = int.Parse(horasGet);
+                decimal valorTotal = precoInicial + (horas * precoPorHora);
+
+                veiculos.Remove(placa);
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
@@ -53,7 +59,13 @@ namespace DesafioFundamentos.Models
             // Verifica se há veículos no estacionamento
             if (veiculos.Any())
             {
+                int index = 1;
                 Console.WriteLine("Os veículos estacionados são:");
+                foreach (var item in veiculos)
+                {
+                    Console.WriteLine($"{index} - {item}");
+                    index++;
+                }
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
                 // *IMPLEMENTE AQUI*
             }
